@@ -7,5 +7,27 @@
   </head>
   <body>
     <h1>Welcome</h1>
+    <script>
+      const accessToken = localStorage.getItem("access_token");
+      console.log(accessToken);
+      const verificationEndpoint =
+        "https://www.googleapis.com/oauth2/v3/tokeninfo";
+
+      fetch(`${verificationEndpoint}?access_token=${accessToken}`)
+        .then((response) => response.json())
+        .then((tokenInfo) => {
+          if (tokenInfo.aud === "YOUR_CLIENT_ID") {
+            // Access token is valid
+            console.log("Access token is valid.");
+            console.log("Token Info:", tokenInfo);
+          } else {
+            // Access token is not valid
+            console.log("Access token is invalid.");
+          }
+        })
+        .catch((error) => {
+          console.error("Token Verification Error:", error);
+        });
+    </script>
   </body>
 </html>
