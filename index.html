@@ -7,6 +7,7 @@
   </head>
   <body>
     <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <script src="https://accounts.google.com/gsi/client" async defer></script>
     <meta
       name="google-signin-client_id"
       content="1074686216388-s713tl1dssbln22e0228pkojamu0m4ps.apps.googleusercontent.com"
@@ -19,6 +20,7 @@
     ></div>
     <button>click</button>
     <script>
+      const google = import("https://accounts.google.com/gsi/client");
       function handlePopupClose() {
         alert("success");
       }
