@@ -17,9 +17,28 @@
       data-onsuccess="onSignIn"
       content="1074686216388-s713tl1dssbln22e0228pkojamu0m4ps.apps.googleusercontent.com"
     ></div>
+    <button>click</button>
     <script>
       function handlePopupClose() {
         alert("success");
+      }
+      const btn = document.querySelector("button");
+      btn.onclick = () => {
+        auth();
+      };
+      function auth() {
+        const client = google.accounts.oauth2.initCodeClient({
+          client_id:
+            "1074686216388-s713tl1dssbln22e0228pkojamu0m4ps.apps.googleusercontent.com",
+          scope: "https://www.googleapis.com/auth/userinfo.profile",
+          ux_mode: "popup",
+          callback: (response) => {
+            if (response.code) {
+              console.log(response.code);
+            }
+          },
+        });
+        client.requestCode();
       }
 
       function onSignIn(googleUser) {
