@@ -6,11 +6,15 @@
     <title>Document</title>
   </head>
   <body>
-    <button onclick="oauthSignIn">Login with google</button>
+    <button>Login with google</button>
     <script>
       /*
        * Create form to request access token from Google's OAuth 2.0 server.
        */
+      const button = document.querySelector("button");
+      button.onclick = () => {
+        oauthSignIn();
+      };
       function oauthSignIn() {
         // Google's OAuth 2.0 endpoint for requesting an access token
         var oauth2Endpoint = "https://accounts.google.com/o/oauth2/v2/auth";
