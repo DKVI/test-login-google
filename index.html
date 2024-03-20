@@ -15,7 +15,7 @@
     <!-- <div class="g-signin2" data-onsuccess="onSignIn"></div> -->
     <script>
       function handlePopupClose() {
-        // Process Google Sign-in completion or error here
+        alert("success");
       }
 
       function onSignIn(googleUser) {
@@ -25,16 +25,6 @@
         console.log("Image URL: " + profile.getImageUrl());
         console.log("Email: " + profile.getEmail()); // This is null if the 'email' scope is not present.
       }
-    </script>
-    <script>
-      window.onload = function () {
-        google.accounts.id.initialize({
-          client_id:
-            "1074686216388-s713tl1dssbln22e0228pkojamu0m4ps.apps.googleusercontent.com",
-          callback: handleCredentialResponse,
-        });
-        google.accounts.id.prompt();
-      };
     </script>
   </body>
 </html>
