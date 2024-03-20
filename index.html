@@ -13,13 +13,24 @@
     />
     <div class="g-signin2" data-onsuccess="onSignIn"></div>
     <script>
+      function handlePopupClose() {
+        // Process Google Sign-in completion or error here
+      }
+
+      window.addEventListener("message", (event) => {
+        if (event.origin === "https://accounts.google.com") {
+          // Replace with your popup origin if different
+          if (event.data === "closed") {
+            handlePopupClose();
+          }
+        }
+      });
       function onSignIn(googleUser) {
         var profile = googleUser.getBasicProfile();
         console.log("ID: " + profile.getId()); // Do not send to your backend! Use an ID token instead.
         console.log("Name: " + profile.getName());
         console.log("Image URL: " + profile.getImageUrl());
         console.log("Email: " + profile.getEmail()); // This is null if the 'email' scope is not present.
-        alert(`Chào mừng ${profile.getName()}`);
       }
     </script>
   </body>
