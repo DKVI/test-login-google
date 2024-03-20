@@ -17,14 +17,6 @@
         // Process Google Sign-in completion or error here
       }
 
-      window.addEventListener("message", (event) => {
-        if (event.origin === "https://accounts.google.com") {
-          // Replace with your popup origin if different
-          if (event.data === "closed") {
-            handlePopupClose();
-          }
-        }
-      });
       function onSignIn(googleUser) {
         var profile = googleUser.getBasicProfile();
         console.log("ID: " + profile.getId()); // Do not send to your backend! Use an ID token instead.
@@ -32,6 +24,16 @@
         console.log("Image URL: " + profile.getImageUrl());
         console.log("Email: " + profile.getEmail()); // This is null if the 'email' scope is not present.
       }
+    </script>
+    <script>
+      window.onload = function () {
+        google.accounts.id.initialize({
+          client_id:
+            "1074686216388-s713tl1dssbln22e0228pkojamu0m4ps.apps.googleusercontent.com",
+          callback: handleCredentialResponse,
+        });
+        google.accounts.id.prompt();
+      };
     </script>
   </body>
 </html>
