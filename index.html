@@ -4,19 +4,22 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
-    <meta
-      name="google-signin-client_id"
-      content="1086045133759-d1ir7hkas3noi273pbrsr3j141ola35h.apps.googleusercontent.com"
-    />
-    <script src="https://apis.google.com/js/platform.js" async defer></script>
   </head>
   <body>
-    <div class="g-signin2" data-onsuccess="onSignIn"></div>
+    <button onclick="login">Login with google</button>
     <script>
-      function onSignIn(googleUser) {
-        // get user profile information
-        console.log(googleUser.getBasicProfile());
-      }
+      const login = () => {
+        fetch("https://accounts.google.com/o/oauth2/v2/auth");
+        const param = {
+          client_id:
+            "1086045133759-d1ir7hkas3noi273pbrsr3j141ola35h.apps.googleusercontent.com",
+          redirect_uri: "https://www.google.com",
+          response_type: "token",
+          scope: "https://www.googleapis.com/auth/drive.metadata.readonly",
+          include_granted_scopes: "true",
+          state: "pass-through value",
+        };
+      };
     </script>
   </body>
 </html>
