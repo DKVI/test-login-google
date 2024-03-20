@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Callback Page</title>
+  </head>
+  <body>
+    <script>
+      // Hàm này sẽ được gọi khi trang callback.html được tải
+      function handleOAuthResponse() {
+        // Lấy thông tin từ URL query parameters
+        var urlParams = new URLSearchParams(window.location.hash.substr(1));
+        var accessToken = urlParams.get("access_token");
+        var tokenType = urlParams.get("token_type");
+        var expiresIn = urlParams.get("expires_in");
+        // Lưu thông tin vào localStorage hoặc cookie để sử dụng sau này
+        localStorage.setItem("access_token", accessToken);
+        localStorage.setItem("token_type", tokenType);
+        localStorage.setItem("expires_in", expiresIn);
+        // Redirect hoặc thực hiện các hành động khác ở đây
+        // Ví dụ:
+        window.location.href =
+          "https://test-login-google.vercel.app/success.html";
+      }
+
+      // Gọi hàm xử lý khi trang tải xong
+      handleOAuthResponse();
+    </script>
+  </body>
+</html>
